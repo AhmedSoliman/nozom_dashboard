@@ -1,0 +1,233 @@
+<!doctype html> <!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding an manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+	<!--<![endif]-->
+	<head>
+		<meta charset="utf-8">
+		<!-- Use the .htaccess and remove these lines to avoid edge case issues.
+		More info: h5bp.com/b/378 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>noZom Managemnt | Dashboard</title>
+		<meta name="description" content="">
+		<meta name="author" content="Ahmed Soliman">
+		<!-- Mobile viewport optimized: j.mp/bplateviewport -->
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<!-- Place favicon.ico and apple-touch-icon.png in the root directory: mathiasbynens.be/notes/touch-icons -->
+		<!-- CSS: implied media=all -->
+		<!-- CSS concatenated and minified via ant build script-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/fileuploader.css">
+		<!-- end CSS-->
+		<!-- More ideas for your <head> here: h5bp.com/d/head-Tips -->
+		<!-- All JavaScript at the bottom, except for Modernizr / Respond.
+		Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
+		For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
+		<script src="js/libs/modernizr-2.0.6.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<header class="topbar">
+				<div class="fill">
+					<div class="container">
+						<a class="brand" href="#">نظم لتكنولوجيا المعلومات</a>
+						<ul class="nav">
+							<li class="active">
+								<a href="#">Home</a>
+							</li>
+							<li>
+								<a href="#about">About</a>
+							</li>
+							<li>
+								<a href="#contact">Contact</a>
+							</li>
+						</ul>
+						<form action="" class="pull-right">
+							<input class="input-small" type="text" placeholder="Username">
+							<input class="input-small" type="password" placeholder="Password">
+							<button class="btn" type="submit">
+								Sign in
+							</button>
+						</form>
+					</div>
+				</div>
+			</header>
+			<div class="container">
+				<div class="content">
+					<div class="page-header">
+						<h1>Management Dashboard <small>just awesome!</small></h1>
+					</div>
+					<div class="row">
+						<div class="span10">
+						    <div id="form-alert"></div>
+	
+							<ul class="tabs clearfix" data-tabs="tabs">
+								<li class="active">
+									<a href="#add">Add Member</a>
+								</li>
+								<li>
+									<a href="#search">Search</a>
+								</li>
+								<li>
+									<a href="#log">Log Activity</a>
+								</li>
+								<li>
+									<a href="#renew">Renew Subscription</a>
+								</li>
+							</ul>
+							<!-- Tab Contents -->
+							<div class="pill-content clearfix">
+								<div class="active" id="add">
+									<form id="newMember" action="/members" method="post">
+										<div class="clearfix">
+											<label for="username">Username</label>
+											<div class="input">
+												<div class="input-append">
+													<input placeholder="hamada" id="username" name="username" type="text" class="xlarge" />
+													<label id="username-indicator" class="add-on hidden"></label>
+												</div>
+											</div>
+										</div> <!-- end of username block -->
+										<div class="clearfix">
+											<label for="name">Name</label>
+											<div class="input">
+												<input placeholder="Hamada Emam" id="name" name="name" type="text" class="xlarge" />
+											</div>
+										</div><!-- end of Name block -->
+										<div class="clearfix">
+											<label for="email">E-Mail</label>
+											<div class="input">
+											<div class="input-append">
+												<input placeholder="sample@domain.com" name="email" id="email" type="text" class="xlarge" />
+												<label id="email-indicator" class="add-on hidden"></label>
+												</div>	
+											</div>
+										</div><!-- end of email block -->
+										
+										<div class="clearfix">
+											<label for="photo">Personal Photo</label>
+											<div id="file-uploader" class="input">
+											    <noscript>          
+											        <p>Please enable JavaScript to use file uploader.</p>
+											        <!-- or put a simple form for upload here -->
+											    </noscript>         
+											</div>
+											<div id="photoPreview"></div>
+											</div><!-- end of Photo block -->
+										<div class="clearfix">
+											<label for="national-id" class="required">National ID</label>
+											<div class="input">
+												<div class="input-append">
+													<input id="national-id" type="text" name="national-id" class="xlarge" />
+													<label id="national-id-indicator" class="add-on hidden"></label>
+												</div>
+											</div>
+										</div><!-- end of National ID block -->
+
+										<div class="clearfix">
+											<label for="faculty">Faculty</label>
+											<div class="input">
+												<select id="faculty" name="faculty" class="normalSelect xlarge">
+												</select>
+											</div>
+										</div><!-- end of Faculty block -->
+
+										
+										<div class="clearfix">
+											<label for="twitter">Twitter</label>
+											<div class="input">
+												<div class="input-prepend">
+													<span class="add-on">@</span>
+													<input placeholder="nozom_ngo" name="twitter" id="twitter" type="text" class="medium" />
+													<label id="twitter-indicator" class="add-on hidden"></label>
+												</div>
+											</div>
+										</div><!-- end of twitter block -->
+										
+ 										<div class="clearfix">
+											<label for="type">Membership Type</label>
+											<div class="input">
+												<select id="type" name="membership-type" class="normalSelect xlarge">
+													<option value="Normal">عامل</option>
+													<option value="Enrollment">انتساب</option>
+													<option value="Honorary">فخري</option>
+												</select>
+											</div>
+										</div><!-- end of Faculty block -->
+										<div class="actions">
+											<input class="btn large primary" type="submit" value="Add Member" />
+											<button class="btn large" type="reset">
+												Cancel
+											</button>
+										</div> <!-- end of actions block -->
+									</form>
+
+								</div>
+								<div id="search">
+									...
+								</div>
+								<div id="log">
+									...
+								</div>
+								<div id="renew">
+									...
+								</div>
+							</div>
+							<!-- End Tab Contents -->
+						</div>
+						<div class="span4">
+							<h3>Notes</h3>
+							Fazee3
+						</div>
+					</div>
+				</div>
+				<footer>
+					<p>
+						&copy; noZom Information Technology 2011
+					</p>
+				</footer>
+			</div>
+			<!-- /container -->
+			<footer></footer>
+		</div>
+		<!--! end of #container -->
+		<!-- JavaScript at the bottom for fast page loading -->
+		<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.6.2.min.js"><\/script>')</script>
+		<script src="js/mylibs/jquery.mockjax.js"></script>
+		
+		<!-- scripts concatenated and minified via ant build script-->
+		<script defer src="js/plugins.js"></script>
+		
+		<script src="js/mock.js"></script>
+		
+		<script defer src="js/script.js"></script>
+		<script defer src="js/mylibs/bootstrap-alerts.js"></script>
+		<script defer src="js/mylibs/bootstrap-dropdown.js"></script>
+		<script defer src="js/mylibs/bootstrap-modal.js"></script>
+		<script defer src="js/mylibs/bootstrap-tabs.js"></script>
+		<script defer src="js/mylibs/jquery.form.js"></script>
+		<script defer src="js/mylibs/fileuploader.js"></script>
+		<script defer src="js/mylibs/jquery.scrollTo-min.js"></script>
+		<!-- end scripts-->
+		<!-- Change UA-XXXXX-X to be your site's ID -->
+		<!-- <script>
+			window._gaq = [['_setAccount', 'UAXXXXXXXX1'], ['_trackPageview'], ['_trackPageLoadTime']];
+			Modernizr.load({
+				load : ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+			});
+
+		</script> -->
+		<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+		chromium.org/developers/how-tos/chrome-frame-getting-started -->
+		<!--[if lt IE 7 ]>
+		<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+		<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+		<![endif]-->
+	</body>
+</html>
