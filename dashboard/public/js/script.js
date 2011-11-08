@@ -23,11 +23,20 @@ var Utils = (function() {
     	 alertElem.fadeIn();
     	 
 	}
+	var resetForm = function(element) {
+		$(element).resetForm();
+		$("#newMember label[id$='-indicator']").each(function(index) {
+			Utils.clearIndicator($(this));
+		});
+		$('#photoPreview img').remove();
+ 		$('.qq-upload-list li').remove();
+	}
 	return {
 		clearIndicator: clearIndicator,
 		correctIndicator: correctIndicator,
 		incorrectIndicator: incorrectIndicator,
-		showAlert: showAlert
+		showAlert: showAlert,
+		resetForm: resetForm
 		}
 })();
 
@@ -47,6 +56,7 @@ var Member = (function() {
 		if (responseJSON.success == true) {
 			var elem = $('<img src="/api/tmp_photo?filename=' + responseJSON.filename + '" />');
 			$('#photoPreview').html(elem);
+			$('#newMember input[name=photo]').attr("value", responseJSON.filename);
 		} else {
 			Utils.showAlert("Server rejected the uploaded photo, the reason is '"+ responseJSON.reason +"'", "error");
 		}
@@ -119,7 +129,8 @@ $(document).ready(function() {
 	// form trigger
 	$('#newMember').ajaxForm({ success: function (response, statusTxt) {
 	        if (response.success == true) {
-				Utils.showAlert("New member is added with id (" + statusTxt +")", "success");
+				Utils.showAlert("New member (<strong>" + $('#newMember input[name=username]')[0].value + "</strong>) is added with id (<strong>" + response.member_id +"</strong>)", "success");
+				Utils.resetForm('#newMember');
 	        } else {
 	        	console.log(response);
 	        	Utils.showAlert("Couldn't add new member because: (" + response.reason +")", "error");
@@ -129,7 +140,6 @@ $(document).ready(function() {
 			Utils.showAlert("ERROR: Cannot add new member because (" + response +")", "error");
 			console.log(response);
 		},
-		clearForm: true,
 		dataType: "json"
 		
 	});

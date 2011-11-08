@@ -5,3 +5,4 @@
 *.rej
 .hg
 data/uploads
+data/photos

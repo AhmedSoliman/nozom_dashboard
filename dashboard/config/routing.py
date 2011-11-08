@@ -20,6 +20,7 @@ def make_map(config):
 
     # CUSTOM ROUTES HERE
     map.resource('member', 'members')
+    map.connect('view_photo', '/photo/{filename}', controller="api", action="photo")
     map.connect('/{controller}/{action}')
     map.connect('/{controller}/{action}/{id}')
 

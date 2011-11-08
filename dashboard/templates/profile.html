@@ -1,0 +1,88 @@
+<%inherit file="/base.html" />
+<%def name="title()">${c.member.name}</%def>
+			<div class="container">
+				<div class="content">
+					<div class="row">
+    					<div class="span3">
+    					    <img width="150" src="${h.url('view_photo', filename=c.member.photo)}" alt="Ahmed Soliman" />
+    					    <a href="/edit/" class="small-action">Change Avatar</a>
+    					    <ul class="unstyled">
+    					    	<li><a href="#" >Edit</a></li>
+    					    	<li><a href="#" >Delete Member</a></li>
+    					    </ul>
+    					</div>
+    					<div class="span10">
+	        				<section id="profile-info">
+	        					<h2 class="pull-right member-id">#${c.member.member_id}</h2>
+	        					<h1>${c.member.name} <small>${c.member.username}</small></h1>
+	        					<span class="label">عضو عامل</span>
+	        					<ul class="unstyled">
+	        						<li>Mahawees Editor in Chief </li>
+	        						<li>Executive Committe Member </li>
+	        					</ul>
+
+		        				<div class="page-header">
+									<h2>Personal Information</h2>
+		        				</div>
+	        					
+	        					<form id="personal-info">
+	        						<div class="clearfix">
+			        					<label>E-Mail</label>
+			        					<div class="input">
+			        						<span><a href="#">${c.member.email}</a></span>
+			        						<button class="btn info">Send Email</button>
+			        					</div>
+		        					</div>
+	
+	        						<div class="clearfix">
+			        					<label>National ID</label>
+			        					<div class="input">
+			        						<span>${c.member.national_id}</span>
+			        					</div>
+		        					</div>
+		        					
+	        						<div class="clearfix">
+			        					<label>Twitter</label>
+			        					<div class="input">
+			        						<a href="#">${c.member.twitter_id}</a>
+			        					</div>
+		        					</div>
+	
+	        					</form>
+        					</section>
+        				<section id="activity-log">
+	        				<div class="page-header">
+								<h2>Activity Log</h2>
+	        				</div>
+							<table>
+								<thead>
+									<tr>
+										<th>Datetime</th>
+										<th>Activity</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="date">24/12/2011 12:30PM</td>
+										<td>Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, </td>
+									</tr>
+									<tr>
+										<td class="date">24/12/2011 12:30PM</td>
+										<td>Doing something that matters to the history oadsff data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history oasdff data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to tfhe historadsfy of data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, 
+											Doing something that matters to the history of data structures, Doing something that matters to the history of data structures, </td>
+									</tr>
+								</tbody>
+							</table>        					
+        				</section>
+    					</div>
+					</div>
+				</div>
+			</div>
+			<!-- /container -->

@@ -28,6 +28,7 @@ def load_environment(global_conf, app_conf):
     config['routes.map'] = make_map(config)
     config['pylons.app_globals'] = app_globals.Globals(config)
     config['pylons.h'] = dashboard.lib.helpers
+    config['pylons.strict_c'] = True
     
     # Setup cache object as early as possible
     import pylons

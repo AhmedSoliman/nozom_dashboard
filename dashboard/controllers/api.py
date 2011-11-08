@@ -13,6 +13,7 @@ import os
 
 from pylons import config
 import hashlib
+import stat
 from PIL import Image
 import cStringIO
 
@@ -41,11 +42,25 @@ class ApiController(BaseController):
             return False
         else:
             return True
+    
+    def photo(self, filename):
+        permanent_file = open(
+            os.path.join(
+                config['app_conf']['permanent_store'],
+                filename
+            ),
+            'r'
+        )    
+        data = permanent_file.read()
+        permanent_file.close()
+        response.content_type = guess_type(filename)[0] or 'text/plain'
+        return data
+        
     def tmp_photo(self):
         filename = request.GET['filename']
         permanent_file = open(
             os.path.join(
-                config['app_conf']['permanent_store'],
+                config['app_conf']['tmp_store'],
                 filename
             ),
             'r'
@@ -96,7 +111,7 @@ class ApiController(BaseController):
             
         im = im.resize((MAXSIZEX, MAXSIZEY), Image.ANTIALIAS)
         fout = open(os.path.join(
-                config['app_conf']['permanent_store'],
+                config['app_conf']['tmp_store'],
                 new_name
             ), 'wb')
         im.save(fout, "jpeg", quality = 90) # save the image
